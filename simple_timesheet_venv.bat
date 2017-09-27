@@ -1,0 +1,1 @@
+virtualenv --no-site-packages --distribute .env && call %~dp0.env/Scripts/activate && pip install -r requirements.txt

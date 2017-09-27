@@ -51,4 +51,10 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-.env/
+env/
+.env
+./env/
+.env/*
+.gitattributes
+requirements_old.txt
+settings.ini

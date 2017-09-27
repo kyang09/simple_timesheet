@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'simple_timesheet.apps.core'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -78,7 +79,8 @@ WSGI_APPLICATION = 'simple_timesheet.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME' : PROJECT_DIR.child('db.sqlite3')
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

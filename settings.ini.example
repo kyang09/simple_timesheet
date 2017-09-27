@@ -1,0 +1,4 @@
+[settings]
+# % is escaped, so it's %%. There is only supposed to be one %.
+SECRET_KEY=asdasdam%%y#%%terwg2afas24
+DEBUG=False

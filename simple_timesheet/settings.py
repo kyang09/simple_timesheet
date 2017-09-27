@@ -38,7 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'simple_timesheet.apps.core'
+    'simple_timesheet.apps.core',
+    'webpack_loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -106,7 +107,16 @@ STATIC_ROOT = PROJECT_DIR.parent.child('static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     PROJECT_DIR.child('static'),
+    PROJECT_DIR.child('static').child('js').child('bundles'),
+    #PROJECT_DIR.child('assets'),
 )
 
 MEDIA_ROOT = PROJECT_DIR.parent.child('media')
 MEDIA_URL = '/media/'
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'js/bundles/',
+        'STATS_FILE': PROJECT_DIR.parent.child('webpack-stats.json'),
+    }
+}

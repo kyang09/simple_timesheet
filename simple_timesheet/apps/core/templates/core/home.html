@@ -1,5 +1,9 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load render_bundle from webpack_loader %}
 
 {% block content %}
-  <h1>Hello, World</h1>
+    <h1>Simple Timesheet App</h1>
+    <div id="container">
+        {% render_bundle "main" %}
+    </div>
 {% endblock %}

@@ -26,6 +26,15 @@ Once npm is set up, in the directory where package.json is, simply do:
 This will install all JavaScript-related dependencies used by the ReactJS application.
 If there are errors, read the errors to see if you need more dependencies outside of the given package.json.
 
+### Running the Application
+If installation goes well, simple run a local server to try it out:
+
+    python manage.py runserver
+
+This should create a local server (Most likely on 127.0.0.1:8000). Visit the server address and the timesheet application should show up.
+
+If there are any issues, you may try a few commands included in the "Customizing the Code" section to set up necessary files.
+
 ### Customizing the Code
 #### Django
 Operations to manage the Django environment is done with the manage.py file included in the root directory.

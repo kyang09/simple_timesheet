@@ -3,8 +3,43 @@ import ReactDOM from 'react-dom'
 //import Fetch from 'react-fetch'
 import createReactClass from 'create-react-class'
 
-var EntryList = createReactClass({
-    loadEntriesFromServer: function(){
+
+class Greeting extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+class EditButton extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {isToggleOn: true};
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        }));
+    }
+
+    render() {
+        return (
+          <button onClick={this.handleClick}>
+            {this.state.isToggleOn ? 'ON' : 'OFF'}
+          </button>
+        );
+    }
+}
+
+//var EntryList = createReactClass({ // Use this format incase ES5 and lower.
+class EntryList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {data: []};
+    }
+
+    loadEntriesFromServer() {
         $.ajax({
             url: this.props.url,
             datatype: 'json',
@@ -13,17 +48,13 @@ var EntryList = createReactClass({
                 this.setState({data: data});
             }.bind(this)
         })
-    },
+    }
 
-    getInitialState: function() {
-        return {data: []};
-    },
-
-    componentDidMount: function() {
+    componentDidMount() {
         //this.loadEntriesFromServer();
-    }, 
+    } 
 
-    render: function() {
+    render() {
         if (this.state.data) {
             /*var entryNodes = this.state.data.map(function(entry){
                 return <li> {entry.comment} </li>
@@ -64,7 +95,7 @@ var EntryList = createReactClass({
             </table>
         )
     }
-})
+}
 
 ReactDOM.render(<EntryList url='/api/' />, 
     document.getElementById('container'))

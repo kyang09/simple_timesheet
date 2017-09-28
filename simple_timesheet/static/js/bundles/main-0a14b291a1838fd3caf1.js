@@ -969,10 +969,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //import Fetch from 'react-fetch'
 
 
-var EntryList = __WEBPACK_IMPORTED_MODULE_2_create_react_class___default()({
-    displayName: 'EntryList',
+class Greeting extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+    render() {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'h1',
+            null,
+            'Hello, ',
+            this.props.name
+        );
+    }
+}
 
-    loadEntriesFromServer: function () {
+class EditButton extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+    constructor(props) {
+        super(props);
+        this.state = { isToggleOn: true };
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        }));
+    }
+
+    render() {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'button',
+            { onClick: this.handleClick },
+            this.state.isToggleOn ? 'ON' : 'OFF'
+        );
+    }
+}
+
+//var EntryList = createReactClass({ // Use this format incase ES5 and lower.
+class EntryList extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: [] };
+    }
+
+    loadEntriesFromServer() {
         $.ajax({
             url: this.props.url,
             datatype: 'json',
@@ -981,22 +1018,18 @@ var EntryList = __WEBPACK_IMPORTED_MODULE_2_create_react_class___default()({
                 this.setState({ data: data });
             }.bind(this)
         });
-    },
+    }
 
-    getInitialState: function () {
-        return { data: [] };
-    },
-
-    componentDidMount: function () {
+    componentDidMount() {
         //this.loadEntriesFromServer();
-    },
+    }
 
-    render: function () {
+    render() {
         if (this.state.data) {
             /*var entryNodes = this.state.data.map(function(entry){
                 return <li> {entry.comment} </li>
             })*/
-            var entryNodesStrs = [{ "date": "1/1/13", "from": "11:00AM", "to": "2:15PM", "entryId": "0" }, { "date": "5/3/34", "from": "9:00PM", "to": "12:00PM", "entryId": "1" }, { "date": "8/5/65", "from": "4:30PM", "to": "6:45PM", "entryId": "2" }, { "date": "9/3/23", "from": "11:30AM", "to": "11:45AM", "entryId": "3" }];
+            var entryNodesStrs = [{ "date": "1/1/13", "time_from": "11:00AM", "time_to": "2:15PM", "entryId": "0" }, { "date": "5/3/34", "time_from": "9:00PM", "time_to": "12:00PM", "entryId": "1" }, { "date": "8/5/65", "time_from": "4:30PM", "time_to": "6:45PM", "entryId": "2" }, { "date": "9/3/23", "time_from": "11:30AM", "time_to": "11:45AM", "entryId": "3" }];
 
             var entryNodes = entryNodesStrs.map(function (entry) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1013,14 +1046,14 @@ var EntryList = __WEBPACK_IMPORTED_MODULE_2_create_react_class___default()({
                         'td',
                         null,
                         ' ',
-                        entry.from,
+                        entry.time_from,
                         ' '
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'td',
                         null,
                         ' ',
-                        entry.to,
+                        entry.time_to,
                         ' '
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1079,7 +1112,7 @@ var EntryList = __WEBPACK_IMPORTED_MODULE_2_create_react_class___default()({
             )
         );
     }
-});
+}
 
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(EntryList, { url: '/api/' }), document.getElementById('container'));
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(16)))

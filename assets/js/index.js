@@ -60,18 +60,18 @@ class EntryList extends React.Component {
                 return <li> {entry.comment} </li>
             })*/
             var entryNodesStrs = [
-                {"date":"1/1/13","from":"11:00AM","to":"2:15PM","entryId":"0"},
-                {"date":"5/3/34","from":"9:00PM","to":"12:00PM","entryId":"1"},
-                {"date":"8/5/65","from":"4:30PM","to":"6:45PM","entryId":"2"},
-                {"date":"9/3/23","from":"11:30AM","to":"11:45AM","entryId":"3"}
+                {"date":"1/1/13","time_from":"11:00AM","time_to":"2:15PM","entryId":"0"},
+                {"date":"5/3/34","time_from":"9:00PM","time_to":"12:00PM","entryId":"1"},
+                {"date":"8/5/65","time_from":"4:30PM","time_to":"6:45PM","entryId":"2"},
+                {"date":"9/3/23","time_from":"11:30AM","time_to":"11:45AM","entryId":"3"}
             ];
 
             var entryNodes = entryNodesStrs.map(function(entry){
                 return (
                     <tr key={entry.entryId}>
                         <td> {entry.date} </td>
-                        <td> {entry.from} </td>
-                        <td> {entry.to} </td>
+                        <td> {entry.time_from} </td>
+                        <td> {entry.time_to} </td>
                         <td> Edit </td>
                         <td> Delete </td>
                     </tr>

@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'simple_timesheet.apps.core',
     'webpack_loader',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -119,4 +120,11 @@ WEBPACK_LOADER = {
         'BUNDLE_DIR_NAME': 'js/bundles/',
         'STATS_FILE': PROJECT_DIR.parent.child('webpack-stats.json'),
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAdminUser',
+    ],
+    'PAGE_SIZE': 10
 }

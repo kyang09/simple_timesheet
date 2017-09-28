@@ -58,3 +58,4 @@ env/
 .gitattributes
 requirements_old.txt
 settings.ini
+*.bat

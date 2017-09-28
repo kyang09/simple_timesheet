@@ -988,26 +988,92 @@ var EntryList = __WEBPACK_IMPORTED_MODULE_2_create_react_class___default()({
     },
 
     componentDidMount: function () {
-        this.loadEntriesFromServer();
+        //this.loadEntriesFromServer();
     },
 
     render: function () {
         if (this.state.data) {
-            var entryNodes = this.state.data.map(function (entry) {
+            /*var entryNodes = this.state.data.map(function(entry){
+                return <li> {entry.comment} </li>
+            })*/
+            var entryNodesStrs = [{ "date": "1/1/13", "from": "11:00AM", "to": "2:15PM", "entryId": "0" }, { "date": "5/3/34", "from": "9:00PM", "to": "12:00PM", "entryId": "1" }, { "date": "8/5/65", "from": "4:30PM", "to": "6:45PM", "entryId": "2" }, { "date": "9/3/23", "from": "11:30AM", "to": "11:45AM", "entryId": "3" }];
+
+            var entryNodes = entryNodesStrs.map(function (entry) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'li',
-                    null,
-                    ' ',
-                    entry.comment,
-                    ' '
+                    'tr',
+                    { key: entry.toString() },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        entry.date,
+                        ' '
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        entry.from,
+                        ' '
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'td',
+                        null,
+                        ' ',
+                        entry.to,
+                        ' '
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'td',
+                        null,
+                        ' Edit '
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'td',
+                        null,
+                        ' Delete '
+                    )
                 );
             });
         }
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            null,
+            'table',
+            { styles: { width: '100%' } },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'ul',
+                'thead',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'tr',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'th',
+                        null,
+                        'Date'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'th',
+                        null,
+                        'From'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'th',
+                        null,
+                        'To'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'th',
+                        null,
+                        'Edit'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'th',
+                        null,
+                        'Delete'
+                    )
+                )
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'tbody',
                 null,
                 entryNodes
             )
